@@ -1,8 +1,7 @@
 import React from 'react'
 import { BrowserRouter, Route, Link } from 'react-router-dom'
 
-const PageOne = () => <div>Page One</div>
-const PageTwo = () => <div>Page Two</div>
+
 
 const App = () => {
     return (
