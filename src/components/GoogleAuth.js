@@ -18,7 +18,14 @@ export class GoogleAuth extends Component {
                 this.setState({
                     isSignedIn: this.auth.isSignedIn.get()
                 })
+                this.auth.isSignedIn.listen( this.onAuthChange )
             })
+        })
+    }
+
+    onAuthChange = () => {
+        this.setState({
+            isSignedIn: this.auth.isSignedIn.get()
         })
     }
 
