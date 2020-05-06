@@ -29,6 +29,14 @@ export class GoogleAuth extends Component {
         })
     }
 
+    onSignIn = () => {
+        this.auth.signIn()
+    }
+
+    onSignOut = () => {
+        this.auth.signOut()
+    }
+
     renderAuthBtn() {
         if ( this.state.isSignedIn === null ) {
             return null
