@@ -4,10 +4,6 @@ import { connect } from 'react-redux'
 import { signIn, signOut } from '../actions'
 
 export class GoogleAuth extends Component {
-    
-    state = {
-        isSignedIn: null
-    }
 
     // only want this lib to load once when the component mounts
     componentDidMount() {
@@ -17,16 +13,19 @@ export class GoogleAuth extends Component {
                 scope: 'email'
             })
             .then( () => {
+                // create variable that holds boolean of sign in status
                 this.auth = window.gapi.auth2.getAuthInstance()
-                this.setState({
-                    isSignedIn: this.auth.isSignedIn.get()
-                })
+                // immediately update auth state in our redux store
+                this.onAuthChange( this.auth.isSignedIn.get() )
+                // have this listening for any auth changes
                 this.auth.isSignedIn.listen( this.onAuthChange )
+                console.log(this.auth)
+                console.log(this.props)
             })
         })
     }
 
-    onAuthChange = (isSignedIn) => {
+    onAuthChange = isSignedIn => {
         // checks google api to see if isSignedIn is true
         if (isSignedIn) {
             this.props.signIn()
@@ -44,9 +43,9 @@ export class GoogleAuth extends Component {
     }
 
     renderAuthBtn() {
-        if ( this.state.isSignedIn === null ) {
+        if ( this.props.isSignedIn === null ) {
             return null
-        } else if ( this.state.isSignedIn ) {
+        } else if ( this.props.isSignedIn ) {
             return(
                 <button 
                 onClick={this.onSignOutClick}
@@ -77,4 +76,10 @@ export class GoogleAuth extends Component {
 
 }
 
-export default connect(null, { signIn, signOut })(GoogleAuth)
+const mapStateToProps = (state) => {
+    return {
+        isSignedIn: state.auth.isSignedIn
+    }
+}
+
+export default connect( mapStateToProps, { signIn, signOut } )(GoogleAuth)
