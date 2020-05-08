@@ -3,9 +3,19 @@ import { Field, reduxForm } from 'redux-form'
 
 export class StreamCreate extends Component {
 
+    renderError = ({ error, touched }) => {
+        if ( touched && error ) {
+            return(
+                <div className='ui error message'>
+                    <div className='header'>{error}</div>
+                </div>
+            )
+        }
+    }
+
     // Destructure input key (which is an obj of objs) from formProps obj
     // label comes from the label prop in the Field elements because Field doesn't know what to do with it, it passes that prop to the function being called
-    renderInput({ input, label, meta }) {
+    renderInput = ({ input, label, meta }) => {
         console.log(meta)
         // return (
         //     <input 
@@ -17,7 +27,7 @@ export class StreamCreate extends Component {
             <div className='field'>
                 <label>{ label }</label>
                 <input {...input} autoComplete='off' />
-                <div>{ meta.error }</div>
+                {this.renderError(meta)}
             </div>
         )
     }
