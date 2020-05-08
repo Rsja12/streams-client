@@ -19,8 +19,6 @@ export class GoogleAuth extends Component {
                 this.onAuthChange( this.auth.isSignedIn.get() )
                 // have this listening for any auth changes
                 this.auth.isSignedIn.listen( this.onAuthChange )
-                console.log(this.auth)
-                console.log(this.props)
             })
         })
     }

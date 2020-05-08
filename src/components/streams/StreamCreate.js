@@ -6,7 +6,6 @@ export class StreamCreate extends Component {
     // Destructure input key (which is an obj of objs) from formProps obj
     // label comes from the label prop in the Field elements because Field doesn't know what to do with it, it passes that prop to the function being called
     renderInput({ input, label }) {
-        console.log(input)
         // return (
         //     <input 
         //     onChange={formProps.input.onChange} 
@@ -26,7 +25,6 @@ export class StreamCreate extends Component {
     }   
 
     render() {
-        console.log(this.props)
         return (
             <form 
             className='ui form' 
@@ -43,7 +41,7 @@ export class StreamCreate extends Component {
                 component={this.renderInput} />
 
                 <button className='ui button primary'>Submit</button>
-                
+
             </form>
         )
     }
