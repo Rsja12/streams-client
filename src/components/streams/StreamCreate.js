@@ -49,7 +49,7 @@ export class StreamCreate extends Component {
 
 const validate = formValues => {
     const errors = {}
-    
+
     if ( !formValues.title ) {
         errors.title = 'Please enter a title'
     }
@@ -62,5 +62,6 @@ const validate = formValues => {
 }
 
 export default reduxForm({ 
-    form: 'streamCreate'
+    form: 'streamCreate',
+    validate
 })(StreamCreate)
