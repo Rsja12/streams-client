@@ -16,7 +16,8 @@ export class StreamCreate extends Component {
     // Destructure input key (which is an obj of objs) from formProps obj
     // label comes from the label prop in the Field elements because Field doesn't know what to do with it, it passes that prop to the function being called
     renderInput = ({ input, label, meta }) => {
-        console.log(meta)
+
+        const className = `field ${meta.error && meta.touched ? 'error' : ''}`
         // return (
         //     <input 
         //     onChange={formProps.input.onChange} 
@@ -24,7 +25,7 @@ export class StreamCreate extends Component {
         // )
         // grab every prop and add it to input
         return(
-            <div className='field'>
+            <div className={className}>
                 <label>{ label }</label>
                 <input {...input} autoComplete='off' />
                 {this.renderError(meta)}
