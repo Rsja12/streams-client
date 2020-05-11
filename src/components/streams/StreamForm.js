@@ -34,7 +34,7 @@ export class StreamForm extends Component {
     }
 
     onSubmit = formValues => {
-        // this is a cb coming from parent component
+        // this is a cb coming from parent component through ReduxForm
         this.props.onSubmit(formValues)
     }   
     
