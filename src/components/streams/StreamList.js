@@ -8,12 +8,28 @@ class StreamList extends React.Component {
         this.props.fetchStreams()
     }
 
+    renderAdminBtns = stream => {
+        if( stream.userId === this.props.currentUserId ) {
+            return(
+                <div className='right floated content'>
+                    <button className='ui button primary'>
+                        Edit
+                    </button>
+                    <button className='ui button negative'>
+                        Delete
+                    </button>
+                </div>
+            )
+        }
+    }
+
     renderList() {
         return this.props.streams.map( stream => {
             return(
                 <div className='item' key={stream.id}>
+                    { this.renderAdminBtns(stream) }
                     <i className='large middle aligned icon camera' />
-                    <div className='conent'>
+                    <div className='content'>
                         {stream.title}
                         <div className='description'>
                             {stream.description}
