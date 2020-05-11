@@ -31,6 +31,9 @@ export const createStream = formValues => {
             type: CREATE_STREAM,
             payload: res.data
         })
+        // programmatic navigation 
+        // get user back to root route
+        
     }
 }
 
