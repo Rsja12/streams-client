@@ -1,4 +1,5 @@
 import streams from '../apis/streams'
+import history from '../history'
 import { 
     SIGN_IN,
     SIGN_OUT, 
@@ -33,7 +34,7 @@ export const createStream = formValues => {
         })
         // programmatic navigation 
         // get user back to root route
-        
+        history.push('/')
     }
 }
 
