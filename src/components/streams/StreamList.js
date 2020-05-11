@@ -17,4 +17,9 @@ class StreamList extends React.Component {
     }
 }
 
+const mapStateToProps = state = ({
+    // turn obj of objs into arr of obj to make it easy to map over and display in UI
+    streams: Object.values( state.streams ) 
+})
+
 export default connect(null, { fetchStreams })(StreamList)
