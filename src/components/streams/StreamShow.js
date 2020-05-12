@@ -1,11 +1,13 @@
-import React from 'react'
+import React, { Component } from 'react'
 
-const StreamShow = () => {
-    return (
-        <div>
-            StreamShow
-        </div>
-    )
+export class StreamShow extends Component {
+    render() {
+        return (
+            <div>
+                StreamShow
+            </div>
+        )
+    }
 }
 
 export default StreamShow
