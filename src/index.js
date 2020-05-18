@@ -17,4 +17,3 @@ ReactDOM.render(
     document.querySelector('#root')
 )
 
-// BASIC FULL CRUD
